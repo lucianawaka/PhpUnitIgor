@@ -4,9 +4,10 @@
 class UserTest extends \PHPUnit\Framework\TestCase
 {
 
-    //Write TEST First
-    
-    public function testThatWeCanGetTheFirstName()
+    //RED GREEN REFACTOR
+
+    /** @test */
+    public function ThatWeCanGetTheFirstName()
     {
         $user = new \App\Models\User;
 
