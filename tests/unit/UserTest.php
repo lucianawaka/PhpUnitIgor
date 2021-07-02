@@ -43,4 +43,30 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($user->getLastName(), 'Joe');
 
     }
+
+    public function testEmailAddressCanBeSet(){
+
+        $email = 'lucianawakabayashi@gmail.com';
+        
+        $user = new \App\Models\User;
+        $user->setEmail($email);
+
+        $this->assertEquals($user->getEmail(),$email);
+
+    }
+
+    public function testEmailVariableContainsCorrectValues(){
+        $user = new \App\Models\User;
+        $user->setFirstName('Billy');
+        $user->setLastName('Joe');
+        $user->setEmail('billy@codecourse.com');
+
+        $emailVariables = $user->getEmailVariables();
+        $this->assertArrayHasKey('full_name',$emailVariables);
+        $this->assertArrayHasKey('email',$emailVariables);
+        
+        $this->assertEquals($emailVariables['full_name'],'Billy Joe');
+        $this->assertEquals($emailVariables['email'],'billy@codecourse.com');
+        
+    }
 }
