@@ -3,17 +3,24 @@
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
+    //Before every single TEST
+    protected $user;
+    
+    public function setUp() :void {
+        $this->user = new \App\Models\User;
+    }
+
 
     //RED GREEN REFACTOR
 
     /** @test */
     public function ThatWeCanGetTheFirstName()
     {
-        $user = new \App\Models\User;
+       // $user = new \App\Models\User;
 
-        $user->setFirstName('Billy');
+        $this->user->setFirstName('Billy');
 
-        $this->assertEquals($user->getFirstName(),'Billy');
+        $this->assertEquals($this->user->getFirstName(),'Billy');
     }
 
     public function testThatWeCanGetTheLastName()
